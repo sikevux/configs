@@ -72,3 +72,8 @@
 (require 'linum)
 (global-linum-mode t)
 (menu-bar-mode 0)
+
+(require 'identica-mode)
+(setq identica-username "sikevux")
+(setq identica-password "Aeo!ieuropmTIeot#43unecd")
+(setq statusnet-server "status.telecomix.org")
