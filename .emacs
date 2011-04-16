@@ -83,6 +83,7 @@
 (require 'identica-mode)
 (setq identica-username "sikevux")
 (setq identica-password "Aeo!ieuropmTIeot#43unecd")
+(setq statusnet-server "status.telecomix.org")
 
 (require 'todochiku)
 (add-hook 'identica-new-dents-hook
