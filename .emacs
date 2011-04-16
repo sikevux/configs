@@ -1,6 +1,7 @@
 ;; -*- mode: emacs-lisp -*-
 ;; Sikevux's main emacs config
 ;; semi commented for lazines
+
 (setq vc-initial-comment t)
 
 ;; Fuck xemacs!
@@ -23,6 +24,7 @@
 (eval-after-load "em-term"
   '(add-to-list 'eshell-visual-commands "fish"))
 
+(setq window-system)
 ;; I die a bit every time someone uses space for indentation. 
 (setq indent-tabs-mode t)
 (setq-default indent-tabs-mode t)
@@ -52,12 +54,16 @@
 (auto-compression-mode 1)
 
 (custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(display-battery-mode t)
  '(display-time-24hr-format t)
  '(display-time-day-and-date nil)
  '(display-time-default-load-average t)
- '(display-time-mail-file (quote none)) 
+ '(display-time-mail-file (quote none))
  '(display-time-mode t)
  '(indicate-buffer-boundaries (quote ((t . right) (top . left))))
  '(indicate-empty-lines t)
@@ -65,7 +71,8 @@
  '(scroll-bar-mode (quote right))
  '(show-paren-mode t)
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
- '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(weblogger-config-alist (quote (("sikevux.se" "https://sikevux.wordpress.com/xmlrpc.php" "sikevux" "" "1")))))
 
 (setq frame-title-format '(buffer-file-name "%f" ("%b")))
 
@@ -76,4 +83,15 @@
 (require 'identica-mode)
 (setq identica-username "sikevux")
 (setq identica-password "Aeo!ieuropmTIeot#43unecd")
-(setq statusnet-server "status.telecomix.org")
+
+(require 'todochiku)
+(add-hook 'identica-new-dents-hook
+  (lambda nil
+    (let ((n identica-new-dents-count))
+      (todochiku-message "Emacs Identica-mode New dents"
+                         (format "You have %d new dent%s." n (if (> n 1) "s" ""))
+                         (todochiku-icon 'social)))))
+
+(require 'weblogger)
+(custom-set-faces
+ )
